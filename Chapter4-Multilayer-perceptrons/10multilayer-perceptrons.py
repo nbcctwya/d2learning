@@ -20,16 +20,19 @@ b2 = nn.Parameter(torch.zeros(num_outputs, requires_grad=True))
 
 params = [W1, b1, W2, b2]
 
+
 # 实现ReLU激活函数
 def relu(X):
     a = torch.zeros_like(X)
     return torch.max(X, a)
+
 
 # 实现模型
 def net(X):
     X = X.reshape((-1, num_inputs))
     H = relu(X @ W1 + b1)  # 这里“@”代表矩阵乘法
     return (H @ W2 + b2)
+
 
 loss = nn.CrossEntropyLoss()
 
